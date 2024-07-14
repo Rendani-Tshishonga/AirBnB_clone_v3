@@ -3,7 +3,7 @@
 A fabric script that generates a .tgz archive
 """
 from fabric.api import local
-import datetime
+from datetime import datetime
 
 """
 A function to generate .tgz archive

@@ -4,7 +4,7 @@ A Bash script that distributes an archive to your web servers
 using the do_deploy module.
 """
 import os
-from frabric.api import *
+from fabric.api import *
 
 env.hosts = ['34.239.250.29', '54.160.126.116']
 
