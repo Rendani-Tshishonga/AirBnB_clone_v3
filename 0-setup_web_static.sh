@@ -22,16 +22,23 @@ sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/tests/
 
 # We will create a fake file to test nginx configuration
-sudo touch /data/web_static/releases/tests/index.html
+sudo echo "
+<html>
+	<head>
+	</head>
+	<body>
+	Holberton School
+	</body>
+</html>" | sudo tee /data/web_static/releases/tests/index.html
 
 # Create a symbolic link
-sudo ln -s /data/web_static/current /data/web_static/releases/tests/
+sudo ln -sf /data/web_static/releases/tests/ /data/web_static/current
 
 # Give ownership to the user and group for the data folder
 sudo chown -R ubuntu:ubuntu /data/
 
 # Update the nginx configuration to serve content to hbnb_static
-sudo sed '53i location \/hbnb_static {\n\t alias /data/web_static/current;\n}' /etc/nginx/sites-available/default
+sudo sed -i '53i \\t location \/hbnb_static {\n\t\t alias /data/web_static/current;\n}' /etc/nginx/sites-available/default
 
 # Restart nginx to persist nginx configuration
 sudo service nginx restart
