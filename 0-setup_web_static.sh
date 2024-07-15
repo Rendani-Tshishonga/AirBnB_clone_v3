@@ -5,13 +5,8 @@
 sudo apt-get update
 
 # We will check that nginx is installed if not install the package
-PKG="nginx"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $PKG | grep "installed ok installed")
-echo Checking for $PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-	echo "No $PKG. Setting up $PKG."
-	sudo apt-get -y $PKG
-fi
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 
 # We will create the necessary directories and files for our deployment
 # of web_static.
