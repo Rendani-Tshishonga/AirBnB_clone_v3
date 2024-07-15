@@ -23,9 +23,10 @@ def do_pack():
     run commands in the local machine. Secondly we will create archive
     using the same local function
     """
-    try:
-        local("mkdir -p ./versions")
-        local("tar -cvz --file={} ./web_static".format(file_path))
-    except:
+    local("mkdir -p ./versions")
+    create_path = local("sudo -cvz --file={} ./web_static".format(file_path))
+    if create_path is not None:
+        return file_path
+    else:
         return None
 
