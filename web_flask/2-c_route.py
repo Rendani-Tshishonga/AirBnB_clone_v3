@@ -28,7 +28,7 @@ We will route to /c/<text>
 """
 @app.route('/c/<text>', strict_slashes=False)
 def cfun(text):
-    return "C" + text.replace(_, " ")
+    return "C " + text.replace("_", " ")
 """
 Web application must listen to all
 public addresses on port 5000.
