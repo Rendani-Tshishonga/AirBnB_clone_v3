@@ -33,8 +33,9 @@ def cfun(text):
 We will create a route for
 /python/<text>
 """
-@app.route('/python/<text>', atrict_slashes=False)
-def python_cool(text):
+@app.route('/python', strict_slashes)
+@app.route('/python/<text>', strict_slashes=False)
+def python_cool(text="is cool"):
     return "Python " + text.replace("_", " ")
 """
 Web application must listen to all
