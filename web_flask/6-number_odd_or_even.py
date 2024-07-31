@@ -55,6 +55,21 @@ HTML page only if n is an integer.
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def  number_temp(n):
     return render_template('5-number.html', n=n)
+
+"""
+We will create a route to
+/number_odd_or_even/<int: n> which will render
+a HTML page only if n is integer.
+"""
+
+@app.route('/number_odd_or_even/<int: n>', strict_slahes=False)
+def number_odd_even(n):
+    if (n % 2 == 0):
+        odd_even = "even" 
+    else
+        odd_even = "odd"
+    return render_template('6-number_odd_or_even.html', n=n, odd_even=odd_even)
+
 """
 Web application must listen to all
 public addresses on port 5000.
