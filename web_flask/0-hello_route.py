@@ -15,6 +15,8 @@ app = Flask(__name__)
 """
 Route the URL to the home directory
 """
+
+
 @app.route('/', strict_slashes=False)
 def index():
     """
@@ -22,5 +24,7 @@ def index():
     """
     return "Hello HBNB!"
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
+
     app.run(host='0.0.0.0', port='5000')
