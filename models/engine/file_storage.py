@@ -12,6 +12,22 @@ class FileStorage:
         """Returns a dictionary of models currently in storage"""
         return FileStorage.__objects
 
+    def get(self, cls, id):
+        """A method to retrieve an object"""
+        objects_class = self.all()
+        for obj in object_class.values():
+            if id == str(obj.id):
+                return obj
+            else:
+                return None
+
+    def count(self, cls=None):
+        """The count of objects"""
+        if cls is not None:
+            return len(self.all(cls))
+        else:
+            return len(self.all())
+
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
