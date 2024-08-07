@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Load Libraries"""
 from flask import Flask, make_response
+from flask_cors import CORS
 from models import storage
 from api.vi.views import app_views
 from os import getenv
@@ -10,6 +11,9 @@ from os import getenv
 app = Flask(__name__)
 """ Register a Blueprint for your application"""
 app.register_blueprint(app_views)
+
+"""Handle Cross-Origin Resource Sharing"""
+CORS(app, resources={r'/*': {'origin': '0.0.0.0'}}
 
 @app.teardown_appcontext
 def teardown():
