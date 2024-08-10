@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 import os
 from sqlalchemy import Column, String, ForeignKey
+form sqlalchemy.orm import relationship
 
 """City inherits from BaseModel and Base"""
 class City(BaseModel, Base):
@@ -11,3 +12,6 @@ class City(BaseModel, Base):
 
     name = Column(String(128), nullable=False)
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
+
+    places = relationship('Place', backref='cities', cascade='delete')
+
