@@ -7,6 +7,7 @@ from api.v1.views import app_views
 from models.state import State
 from models.engine import storage
 
+
 @app_reviews.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     """Retrieves the list of all state objects"""
@@ -16,6 +17,7 @@ def get_states():
         list_objects.append(obj)
     return jsonify(list_objects)
 
+
 @app_reviews.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state_id(state_id):
     """Retrieves a state object"""
@@ -24,6 +26,7 @@ def get_state_id(state_id):
         abort(404)
     else:
         return jsonify(state_obj)
+
 
 @app_reviews.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
 def delete_states(state_id):
@@ -35,6 +38,7 @@ def delete_states(state_id):
         storage.delete(state_obj)
         storage.save()
     return jsonfiy({})
+
 
 @app_reviews.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
